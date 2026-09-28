@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://scenes/inimigo.tscn" id="9_inimigo"]
 [ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="10_killzone"]
 [ext_resource type="PackedScene" uid="uid://cehldju8r0g0w" path="res://scenes/hud.tscn" id="11_hud"]
+[ext_resource type="PackedScene" path="res://scenes/powerup_velocidade.tscn" id="12_powerup"]
 
 [node name="Level" type="Node2D" unique_id=1403962146]
 
@@ -58,6 +59,9 @@ position = Vector2(790, 118)
 
 [node name="Gema4" parent="." unique_id=1994898145 instance=ExtResource("8_gema")]
 position = Vector2(822, 118)
+
+[node name="PowerUpVelocidade" parent="." instance=ExtResource("12_powerup")]
+position = Vector2(520, 176)
 
 [node name="Inimigo" parent="." unique_id=992008558 instance=ExtResource("9_inimigo")]
 position = Vector2(1024, 178)

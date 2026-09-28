@@ -1,10 +1,14 @@
 extends CharacterBody2D
 ## Player do jogo de plataforma.
 
-var SPEED: float = 210.0
+const NORMAL_SPEED: float = 210.0
+const POWERUP_SPEED: float = 340.0
+
+var SPEED: float = NORMAL_SPEED
 var JUMP_VELOCITY: float = -420.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var powerup_timer: Timer = $PowerUpTimer
 
 
 func _physics_process(delta: float) -> void:
@@ -27,6 +31,18 @@ func _physics_process(delta: float) -> void:
 
 func brilhar() -> void:
 	$Particulas.restart()
+
+
+func ativar_powerup_velocidade() -> void:
+	SPEED = POWERUP_SPEED
+	powerup_timer.start()
+	GameManager.set_powerup(true, "Velocidade")
+	brilhar()
+
+
+func _on_power_up_timer_timeout() -> void:
+	SPEED = NORMAL_SPEED
+	GameManager.set_powerup(false)
 
 
 func _update_animation(direction: float, pode_pular: bool) -> void:
